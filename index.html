@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSync | Hospitality Crisis Response</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="shop-front">
+        <div class="curtain left-curtain">
+            <h1 class="hotel-name">GRAND</h1>
+        </div>
+        <div class="curtain right-curtain">
+            <h1 class="hotel-name">PLAZA</h1>
+        </div>
+        <div class="scroll-indicator">
+            <p>SCROLL TO ACTIVATE EMERGENCY HUB</p>
+            <div class="mouse-icon"></div>
+        </div>
+    </div>
+
+    <div class="ambulance-zone">
+        <img src="https://cdn.pixabay.com/photo/2024/12/31/06/47/ambulance-9301630_1280.jpg" id="ambulanceImg" alt="Response Vehicle">
+    </div>
+
+    <div class="main-app">
+        <nav class="premium-nav">
+            <div class="logo">ECO<span>SYNC</span></div>
+        </nav>
+
+        <section class="hero-text">
+            <span class="tagline">HACK2SKILL CHALLENGE</span>
+            <h2>Rapid Crisis <br><span class="accent">Response</span></h2>
+            <p>When the "Grand Plaza" faces a crisis, information silos cost lives. EcoSync bridges the gap between distressed guests, staff, and responders instantly.</p>
+        </section>
+
+        <section class="features-section">
+    <h1 class="section-title">HOW THE WEBSITE WORKS</h1>
+    <div class="features">
+        <div class="feature-card" onclick="document.querySelector('.report-section').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;">
+            <h3>Detect</h3>
+            <p>When residents face issues like fire, short circuit, electricity problems, or medical emergencies, they can visit the website.</p>
+        </div>
+
+        <div class="feature-card" onclick="document.querySelector('.report-section').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;">
+            <h3>Fill The Emergency Form</h3>
+            <p>Residents enter their flat/block number, select the issue type, and describe it. A notification is sent to Ecosync, and the team responds quickly.</p>
+        </div>
+
+        <div class="feature-card" onclick="document.querySelector('.report-section').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;">
+            <h3>Submit</h3>
+            <p>After submission, Ecosync receives the alert and takes immediate action to resolve the issue.</p>
+        </div>
+   
+        <div class="feature-card wide" onclick="document.querySelector('.sos-system').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;">
+            <h3>Quick Access Button</h3>
+            <p>For severe emergencies only. Misuse may result in warnings or temporary bans. Designed strictly for fire, medical, or electrical crises.</p>
+        <div class="quick-access-alert">
+        ⚠️ FOR ANY SUSPICIOUS ACTIVITY OR INFRASTRUCTURE DAMAGE (AFTER AN EARTHQUAKE / STORM),
+        USE THE <span>QUICK ACCESS BUTTON</span>
+    </div>
+        </div>
+    </div>
+</section>
+            <section class="footer-space">
+            <h1>DECENTRALIZED. Breaking boundaries with a borderless ecosystem.<br>
+
+RELIABLE. Built on a foundation of unshakeable trust and security.<BR>
+
+FAST. Performance that redefines the speed of modern innovation.</h1>
+        </section>
+    </div>
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-card">
+            <h2>GRAND<span>PLAZA</span></h2>
+            <p>Owner Registration</p>
+            <form id="registrationForm">
+                <div class="input-group">
+                    <input type="text" name="owner_name" required placeholder="Owner Name">
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" required placeholder="Email Address">
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" required placeholder="Password">
+                </div>
+                <button type="submit" class="reg-btn">INITIALIZE SYSTEM</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCYf7Gd3fpIjiUKA3WAG6GfwStGFDHXHa8",
+    authDomain: "web-app-for-crisis.firebaseapp.com",
+    projectId: "web-app-for-crisis",
+    storageBucket: "web-app-for-crisis.firebasestorage.app",
+    messagingSenderId: "662509699721",
+    appId: "1:662509699721:web:3c57df8ec0b96b92f83c58",
+    measurementId: "G-ZW43K4PV86"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  //We’re making it globally available so that script.js can now send data.
+  window.db = db;
+  window.addDoc = addDoc;
+  window.collection = collection;
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script type="module" src="script.js"></script>
+   <div class="map-section">
+    <h2>GRAND PLAZA HOUSING COMPLEX MAP</h2>
+    
+    <img src="https://the2d3dfloorplancompany.com/wp-content/uploads/2021/12/Apartment-3D-Property-Map-Example-1024x395.webp" 
+         alt="Housing Map">
+</div>
+<!-- 🔥 EMERGENCY SECTIONS -->
+<section class="emergency-sections">
+    <h1 class="section-title">EMERGENCY CONTROL CENTER</h1>
+
+   
+
+<!-- 🔥 REPORT FORM -->
+<section class="report-section">
+    <h2>Report Emergency</h2>
+
+    <form id="reportForm" class="auth-card premium-card">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <select name="type" required>
+            <option value="">Select Emergency Type</option>
+            <option value="medical">Medical</option>
+            <option value="fire">Fire / Electrical</option>
+            <option value="other">Other</option>
+        </select>
+
+        <input type="text" name="location" placeholder="Flat / Block" required>
+
+        <textarea name="details" placeholder="Describe issue..." required></textarea>
+
+        <button class="reg-btn">SEND ALERT</button>
+    </form>
+</section>
+
+<!-- 🔥 HEADING -->
+<h1 class="quick-heading">QUICK ACCESS BUTTON</h1>
+
+<div class="sos-system">
+
+  <div class="sos-btn safe" data-type="safe">
+    ✔ I am Safe
+  </div>
+
+  <div class="sos-btn help" data-type="help">
+    ! I Need Help
+  </div>
+
+  <div class="sos-btn danger" data-type="critical">
+    ⚠ I am Trapped
+  </div>
+
+  <div class="status-card">
+    <h3 id="sosStatus">Awaiting response</h3>
+  </div>
+
+</div>
+<script>
+gsap.from(".section-title", {
+    y: -50,
+    opacity: 0,
+    duration: 1
+});
+
+gsap.from(".feature-card", {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2
+});
+
+gsap.from(".quick-access-alert", {
+    scale: 0.8,
+    opacity: 0,
+    duration: 1,
+    delay: 0.5
+});
+</script>
+<!-- ===================== -->
+<!-- ⭐ FEEDBACK SECTION -->
+<!-- ===================== -->
+<section class="feedback-section">
+
+  <div class="feedback-card">
+    <h3>RATE & FEEDBACK</h3>
+
+    <p>Kindly rate your experience:</p>
+
+    <div id="stars">
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+    </div>
+
+    <p>Please provide your feedback:</p>
+
+    <textarea id="feedback" placeholder="Write your feedback..."></textarea>
+
+    <button id="submitBtn">SUBMIT FEEDBACK</button>
+
+    <div id="successMsg">
+      ✔ Thank you for sharing your valuable feedback with us.
+    </div>
+  </div>
+
+</section>
