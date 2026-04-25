@@ -536,24 +536,21 @@ body {
     align-items: center;
 }
 
-/* Glass Card */
 .feedback-card {
-    width: 420px;
+    width: 100%;
+    max-width: 420px;
     padding: 30px;
     border-radius: 20px;
-
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-
     border: 1px solid rgba(255,255,255,0.1);
-
-    box-shadow: 
-        0 0 40px rgba(0, 209, 255, 0.15),
-        0 20px 60px rgba(0,0,0,0.8);
-
+    box-shadow: 0 0 40px rgba(0, 209, 255, 0.15), 0 20px 60px rgba(0,0,0,0.8);
     text-align: center;
+    overflow: hidden;
+    margin: 0 auto;
 }
+
 
 /* Heading */
 .feedback-card h3 {
@@ -719,13 +716,15 @@ body {
   from { opacity: 0; top: 0px; }
   to   { opacity: 1; top: 30px; }
 }
-.feedback-card {
-    overflow: hidden;
-    width: 90%;
-    margin: 0 auto;
+.feedback-section {
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
 }
 #stars span {
-    font-size: 36px;
+    font-size: 24px;
 }
 /* safe popup = green */
 .simple-popup.safe-popup {
