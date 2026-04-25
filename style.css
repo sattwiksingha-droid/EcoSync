@@ -795,3 +795,7 @@ body {
   .premium-nav { padding: 16px 5%; }
   .sos-system { padding: 20px 15px; }
 }
+.hotel-name {
+    font-size: 5vw !important;
+    letter-spacing: 6px !important;
+}
