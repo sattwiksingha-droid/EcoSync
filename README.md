@@ -133,4 +133,4 @@ Built with 🔥 for HACK2SKILL 2026
 
 ---
 
-*© 2025 EcoSync — Decentralized. Reliable. Fast.*
+*© 2026 EcoSync — Decentralized. Reliable. Fast.*
