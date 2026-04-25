@@ -1,4 +1,3 @@
-// script.js এর একদম শুরুতে add কর
 let pct = 0;
 const loaderBar = document.getElementById('loaderBar');
 const loaderPct = document.getElementById('loaderPct');
@@ -408,7 +407,7 @@ document.querySelectorAll('section').forEach(section => {
     scrollTrigger: { trigger:section, start:'top 80%' }
   });
 });
-// script.js এর শেষে add কর
+
 const words = ["Rapid Crisis Response", "Instant Alerts", "Zero Delay. Zero Doubt."];
 let i = 0, j = 0, isDeleting = false;
 const el = document.querySelector('.hero-text h2 .accent');
@@ -433,9 +432,9 @@ function playSiren() {
   osc.frequency.linearRampToValueAtTime(800, ctx.currentTime + 1);
   osc.start(); osc.stop(ctx.currentTime + 1.2);
 }
-// loader শেষ হওয়ার পর call কর
+
 playSiren();
-// script.js এ add কর
+
 const heroH2 = document.querySelector('.hero-text h2');
 if (heroH2) {
   const text = "Rapid Crisis";
@@ -449,7 +448,7 @@ if (heroH2) {
     scrollTrigger: { trigger: '.hero-text', start: 'top 80%' }
   });
 }
-// loader এর আগে
+
 gsap.fromTo("body",
   { backgroundColor: "#3a0000" },
   { backgroundColor: "#0a0a0a", duration: 1.5, ease: "power2.out" }
