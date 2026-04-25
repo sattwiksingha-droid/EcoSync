@@ -1,3 +1,16 @@
+<!-- index.html এ body এর একদম প্রথমে add কর -->
+<div id="loader" style="
+  position:fixed;inset:0;background:#0a0a0a;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  z-index:99999;font-weight:800;letter-spacing:4px;
+">
+  <div style="font-size:2rem;color:#00D1FF;">ECO<span style="color:#fff">SYNC</span></div>
+  <div style="margin-top:20px;width:200px;height:2px;background:#111;border-radius:2px;overflow:hidden;">
+    <div id="loaderBar" style="height:100%;width:0;background:linear-gradient(90deg,#00D1FF,#ff2e2e);transition:width 0.05s;"></div>
+  </div>
+  <div style="margin-top:12px;color:#555;font-size:0.7rem;" id="loaderPct">0%</div>
+</div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
     <div class="shop-front">
         <div class="curtain left-curtain">
             <h1 class="hotel-name">GRAND</h1>
@@ -30,8 +43,14 @@
         <nav class="premium-nav">
             <div class="logo">ECO<span>SYNC</span></div>
         </nav>
-
-        <section class="hero-text">
+<div id="liveClock" style="color:#00D1FF;font-weight:800;font-size:1rem;letter-spacing:2px;"></div>
+   <!-- nav এর ভেতরে clock এর পাশে -->
+<div style="display:flex;align-items:center;gap:8px;">
+  <div style="width:8px;height:8px;border-radius:50%;background:#00ff88;
+    box-shadow:0 0 10px #00ff88;animation:blink 1s infinite;"></div>
+  <span style="color:#00ff88;font-size:0.75rem;letter-spacing:2px;font-weight:800;">SYSTEM LIVE</span>
+</div>   
+<section class="hero-text">
             <span class="tagline">HACK2SKILL CHALLENGE</span>
             <h2>Rapid Crisis <br><span class="accent">Response</span></h2>
             <p>When the "Grand Plaza" faces a crisis, information silos cost lives. EcoSync bridges the gap between distressed guests, staff, and responders instantly.</p>
@@ -230,5 +249,19 @@ gsap.from(".quick-access-alert", {
       ✔ Thank you for sharing your valuable feedback with us.
     </div>
   </div>
-
+<div class="live-counter" style="text-align:center;margin:40px 0;">
+  <span style="font-size:3rem;font-weight:800;color:#ff2e2e;" id="alertCount">0</span>
+  <p style="color:#aaa;letter-spacing:2px;">ALERTS RESOLVED TODAY</p>
+</div>
 </section>
+<footer style="
+  text-align:center;
+  padding: 40px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.2);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-top: 80px;
+">
+© 2025 ECOSYNC — BUILT FOR HACK2SKILL &nbsp;|&nbsp;  ALL RIGHTS RESERVED
+</footer>

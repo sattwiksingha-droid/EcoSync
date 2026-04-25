@@ -514,12 +514,20 @@ body {
     letter-spacing: 2px;
 }
 
+/* style.css এ .map-section img replace কর */
 .map-section img {
-    width: 80%;
-    max-width: 1000px;
-    border-radius: 10px;
-    border: 2px solid #444;
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 209, 255, 0.2);
+  box-shadow: 0 0 40px rgba(0, 209, 255, 0.1);
+  transition: 0.4s;
 }
+.map-section img:hover {
+  box-shadow: 0 0 60px rgba(0, 209, 255, 0.25);
+  transform: scale(1.01);
+}
+
     /* ===================== */
 /* ⭐ FEEDBACK SECTION */
 /* ===================== */
@@ -629,5 +637,163 @@ body {
     color: #00ff88;
     font-size: 14px;
 }
+/* ===== NEW ADDITIONS ===== */
 
+#tsparticles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
 
+@keyframes sosPulse {
+  0%   { transform: scale(1);   opacity: 0.8; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+.danger::after, .help::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 16px;
+  border: 2px solid currentColor;
+  animation: sosPulse 1.5s infinite;
+  opacity: 0;
+}
+#liveClock {
+  color: #00D1FF;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 4px;
+  font-family: 'Inter', monospace;
+  background: rgba(0, 209, 255, 0.06);
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(0, 209, 255, 0.25);
+  box-shadow: 0 0 12px rgba(0, 209, 255, 0.15);
+  width: fit-content;        /* ← এটাই আসল fix */
+  white-space: nowrap;
+}
+
+.live-counter {
+  text-align: center;
+  margin: 60px 0;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 46, 46, 0.05);
+  border: 1px solid rgba(255, 46, 46, 0.15);
+}
+
+.live-counter p {
+  color: #aaa;
+  letter-spacing: 3px;
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+/* ===== PULSE FIX ===== */
+.sos-btn {
+  position: relative;
+  overflow: visible;
+}
+
+.danger::after, .help::after {
+  position: absolute;  /* এটা missing ছিল */
+}
+
+/* ===== POPUP UPGRADE ===== */
+.simple-popup {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(10,10,10,0.98));
+  color: #fff;
+  padding: 16px 28px;
+  border-radius: 12px;
+  border-left: 4px solid #00D1FF;
+  box-shadow: 0 0 30px rgba(0,209,255,0.3), 0 10px 40px rgba(0,0,0,0.8);
+  z-index: 99999;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  animation: popupSlide 0.4s ease;
+}
+
+@keyframes popupSlide {
+  from { opacity: 0; top: 0px; }
+  to   { opacity: 1; top: 30px; }
+}
+
+/* safe popup = green */
+.simple-popup.safe-popup {
+  border-left: 4px solid #00ff88;
+  box-shadow: 0 0 30px rgba(0,255,136,0.3), 0 10px 40px rgba(0,0,0,0.8);
+}
+
+/* danger popup = red */
+.simple-popup.danger-popup {
+  border-left: 4px solid #ff2e2e;
+  box-shadow: 0 0 30px rgba(255,46,46,0.4), 0 10px 40px rgba(0,0,0,0.8);
+}
+.premium-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 10%;
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 209, 255, 0.06);
+}
+/* style.css এ add কর */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#00D1FF, #ff2e2e);
+  border-radius: 10px;
+}
+::selection {
+  background: rgba(0, 209, 255, 0.3);
+  color: #fff;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+.logo {
+  animation: glitch 4s infinite;
+}
+
+@keyframes glitch {
+  0%, 90%, 100% { 
+    text-shadow: none; 
+    transform: none;
+  }
+  91% { 
+    text-shadow: 2px 0 #ff2e2e, -2px 0 #00D1FF;
+    transform: skewX(2deg);
+  }
+  93% { 
+    text-shadow: -2px 0 #ff2e2e, 2px 0 #00D1FF;
+    transform: skewX(-2deg);
+  }
+  95% { 
+    text-shadow: none;
+    transform: none;
+  }
+}
+/* style.css এর একদম শেষে add কর */
+@media (max-width: 768px) {
+  .hero-text h2 { font-size: 2.8rem; }
+  .features { grid-template-columns: 1fr; }
+  .feature-card.wide { grid-column: span 1; }
+  .main-app { padding: 0 5%; }
+  .auth-card { width: 90%; }
+  .feedback-card { width: 90%; }
+  #reportForm { width: 95%; }
+  .hotel-name { font-size: 14vw; }
+  .premium-nav { padding: 16px 5%; }
+  .sos-system { padding: 20px 15px; }
+}
