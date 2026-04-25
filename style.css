@@ -323,7 +323,8 @@ body {
     opacity: 0.92;
 }
 
-/* hover premium feel */
+@media (hover: hover) and (pointer: fine) {
+    #submitBtn:hover {
 .form-notify:hover {
     transform: scale(1.05);
     box-shadow: 
