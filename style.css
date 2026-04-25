@@ -1,796 +1,265 @@
-:root {
-    --gold: #C5A059;
-    --velvet: #630606;
-    --tech-blue: #00D1FF;
-    --dark: #0A0A0A;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background-color: var(--dark);
-    font-family: 'Inter', sans-serif;
-    color: white;
-    overflow-x: hidden;
-}
-
-/* CURTAIN SYSTEM */
-.shop-front {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    z-index: 100;
-    pointer-events: none; /* Allows scrolling through the curtains */
-}
-
-.curtain {
-    width: 50%;
-    height: 100%;
-    background-color: var(--velvet);
-    display: flex;
-    align-items: center;
-    border: 2px solid var(--gold);
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
-}
-
-.left-curtain { justify-content: flex-end; padding-right: 20px; }
-.right-curtain { justify-content: flex-start; padding-left: 20px; }
-
-.hotel-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 8vw;
-    color: var(--gold);
-    letter-spacing: 10px;
-}
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: var(--gold);
-    font-weight: 800;
-}
-
-/* AMBULANCE ROTATION ZONE */
-.ambulance-zone {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    z-index: 50;
-    opacity: 0; /* Hidden initially */
-}
-
-#ambulanceImg {
-    width: 100%;
-    filter: drop-shadow(0 0 20px var(--black));
-}
-
-/* MAIN CONTENT */
-.main-app {
-    padding: 0 10%;
-    min-height: 250vh; /* Extra height for scrolling */
-}
-
-.premium-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 40px 0;
-}
-
-.logo { font-weight: 800; font-size: 1.5rem; }
-.logo span { color: var(--black); }
-
-.hero-text {
-    margin-top: 20vh;
-    max-width: 700px;
-}
-
-.hero-text h2 { font-size: 5rem; line-height: 1; margin: 20px 0; }
-.accent { color: var(--tech-blue); }
-
-.features {
-    display: flex;
-    gap: 20px;
-    margin-top: 100px;
-}
-
-.feature-card {
-    flex: 1;
-    padding: 40px;
-    background: rgb(18, 10, 10);
-    border-radius: 20px;
-    border: 1px solid rgb(7, 3, 3);
-}
-
-.footer-space { height: 100vh; display: flex; align-items: center; justify-content: center; opacity: 0.2; }
-.auth-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.auth-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 3rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    width: 400px;
-}
-
-.auth-card h2 {
-    font-family: 'Inter', sans-serif;
-    color: #e84848;
-    letter-spacing: 5px;
-    margin-bottom: 10px;
-}
-
-.auth-card h2 span { color: #ff3e3e; }
-
-.input-group { margin-bottom: 1.5rem; }
-
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #555;
-    color: white;
-    outline: none;
-    transition: 0.3s;
-}
-
-.input-group input:focus { border-bottom: 1px solid #ff3e3e; }
-
-.reg-btn {
-    background: #ff3e3e;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    font-weight: 800;
-    cursor: pointer;
-    letter-spacing: 2px;
-    transition: 0.3s;
-}
-
-.reg-btn:hover { background: #fff; color: #000; }
-.section-title {
-    margin-top: 120px;
-    font-size: 2.8rem;
-    text-align: center;
-}
-
-.emergency-grid {
-    display: flex;
-    gap: 20px;
-    margin-top: 40px;
-}
-
-.em-card {
-    flex: 1;
-    padding: 40px;
-    border-radius: 25px;
-    backdrop-filter: blur(15px);
-    cursor: pointer;
-    transition: 0.4s;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.em-card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 0 40px rgba(0,255,255,0.2);
-}
-
-.medical {
-    background: linear-gradient(135deg, rgba(0,255,255,0.2), rgba(0,100,255,0.2));
-}
-
-.fire {
-    background: linear-gradient(135deg, rgba(255,60,60,0.3), rgba(255,120,0,0.2));
-}
-
-.other {
-    background: linear-gradient(135deg, rgba(255,200,0,0.2), rgba(255,255,255,0.1));
-}
-
-.report-section {
-    margin-top: 120px;
-}
-
-.report-section input,
-.report-section select,
-.report-section textarea {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    border: none;
-    background: rgba(255,255,255,0.05);
-    color: rgb(207, 71, 87);
-}
-.report-section {
-    min-height: 100vh;              /*full viewport height */
-    display: flex;
-    justify-content: center;        /* horizontal center */
-    align-items: center;            /* vertical center */
-    flex-direction: column;
-}
-
-/* FORM */
-#reportForm {
-    width: 85%;
-    max-width: 750px;               /* big size */
-    margin: auto;
-}
-
-/* INPUTS */
-.report-section input,
-.report-section select,
-.report-section textarea {
-    width: 100%;
-    padding: 18px;
-    font-size: 16px;
-    margin-bottom: 18px;
-    border-radius: 12px;
-}
-
-/* BUTTON */
-.reg-btn {
-    width: 100%;
-    padding: 16px;
-    font-size: 16px;
-    border-radius: 12px;
-}
-#reportForm {
-    box-shadow: 0 0 60px rgba(0,255,255,0.2);
-    backdrop-filter: blur(20px);
-}
-.ambulance-zone {
-    pointer-events: none; /* 👈 The form will be clickable. */
-}
-.hero-text {
-    position: relative;
-    z-index: 200; /* 👈 It will come over the curtain */
-}
-.shop-front {
-    z-index: 100;
-}
-.main-app {
-    position: relative;
-    z-index: 150;
-}
-.form-notify {
-    background: linear-gradient(135deg, rgba(35, 35, 35, 0.97), rgba(10, 10, 10, 0.92));
-    border-left: 6px solid #ff2e2e;
-
-    padding: 24px 26px;   /* 🔥 bigger box */
-    border-radius: 16px;
-
-    color: #ffffff;
-    margin-bottom: 22px;
-
-    backdrop-filter: blur(16px);
-
-    box-shadow: 
-        0 18px 45px rgba(0,0,0,0.75),
-        0 0 20px rgba(255, 46, 46, 0.25);
-
-    position: relative;
-    overflow: hidden;
-
-    transform: scale(1.03);
-}
-
-/* left glow bar */
-.form-notify::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 6px;
-    height: 100%;
-    background: #ff2e2e;
-    box-shadow: 0 0 18px #ff2e2e;
-}
-
-/* 🔥 BIG HEADING */
-.form-notify h4 {
-    margin: 0;
-    font-size: 20px;   /* bigger */
-    font-weight: 800;
-    color: #ff4d4d;
-    letter-spacing: 0.5px;
-}
-
-/* 🔥 BIG TEXT */
-.form-notify p {
-    margin: 10px 0 0;
-    font-size: 15.5px;  /* bigger readable */
-    line-height: 1.7;
-    opacity: 0.92;
-}
-.form-notify:hover {
-    transform: scale(1.05);
-    box-shadow: 
-        0 22px 60px rgba(0,0,0,0.85),
-        0 0 25px rgba(255, 46, 46, 0.35);
-}
-.sos-system {
-    max-width: 500px;
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.sos-btn {
-    padding: 20px;
-    border-radius: 16px;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.safe {
-    background: rgba(0,255,150,0.15);
-    border: 2px solid #00ff88;
-}
-
-.help {
-    background: rgba(255,180,0,0.15);
-    border: 2px solid #ffb300;
-}
-
-.danger {
-    background: rgba(255,0,0,0.15);
-    border: 2px solid #ff2e2e;
-}
-
-.sos-btn:hover {
-    transform: scale(1.05);
-}
-
-.status-card {
-    padding: 20px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.05);
-    text-align: center;
-}
-.simple-popup {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    background: #111;
-    color: #fff;
-
-    padding: 12px 20px;
-    border-radius: 8px;
-
-    border-left: 4px solid #00D1FF;
-
-    z-index: 9999;
-}
-/* HEADING */
-.quick-heading {
-    text-align: center;
-    margin-top: 70px;
-    margin-bottom: 25px;
-    font-size: 2.2rem;
-    letter-spacing: 3px;
-    color: #00D1FF;
-    font-weight: 700;
-}
-
-/* GLASS BORDER CONTAINER */
-.sos-system {
-    position: relative;
-    max-width: 560px;   
-    margin: 0 auto;
-    padding: 30px;      
-    border-radius: 22px;
-    z-index: 1;
-}
-
-/* GLASS EFFECT LAYER */
-.sos-system::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 22px;
-
-    /*  dark glass */
-    background: linear-gradient(
-        145deg,
-        rgba(25,25,25,0.7),
-        rgba(10,10,10,0.85)
-    );
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    border: 1px solid rgba(255,255,255,0.08);
-
-    /*  depth */
-    box-shadow:
-        0 15px 50px rgba(0,0,0,0.8),
-        inset 0 0 20px rgba(255,255,255,0.03);
-
-    z-index: -1;
-}
-
-/*  PREMIUM HOVER GLOW */
-.sos-system:hover::before {
-    border: 1px solid rgba(0, 209, 255, 0.4);
-
-    box-shadow:
-        0 0 25px rgba(0, 209, 255, 0.25),
-        0 20px 60px rgba(0,0,0,0.9);
-}
-.features-section {
-    padding: 80px 40px;
-    text-align: center;
-}
-
-.section-title {
-    font-size: 32px;
-    margin-bottom: 50px;
-    color: #fff;
-    letter-spacing: 2px;
-}
-
-/* Grid Layout */
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-/* Glass Cards */
-.feature-card {
-    padding: 25px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: white;
-    transition: 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(255,0,0,0.2);
-}
-
-/* Wide Card */
-.feature-card.wide {
-    grid-column: span 2;
-}
-
-/* Alert Bar */
-.quick-access-alert {
-    margin-top: 50px;
-    padding: 20px;
-    border-radius: 15px;
-    background: rgba(255, 0, 0, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,0,0,0.4);
-    color: #ff4d4d;
-    font-weight: bold;
-}
-
-.quick-access-alert span {
-    color: #ff0000;
-    border-bottom: 2px solid red;
-} 
-.map-section {
-    background-color: #000;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.map-section h2 {
-    color: #ffffff;
-    font-size: 28px;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
-
-/* style.css এ .map-section img replace কর */
-.map-section img {
-  width: 80%;
-  max-width: 1000px;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 209, 255, 0.2);
-  box-shadow: 0 0 40px rgba(0, 209, 255, 0.1);
-  transition: 0.4s;
-}
-.map-section img:hover {
-  box-shadow: 0 0 60px rgba(0, 209, 255, 0.25);
-  transform: scale(1.01);
-}
-
-    /* ===================== */
-/* ⭐ FEEDBACK SECTION */
-/* ===================== */
-
-.feedback-section {
-    margin-top: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.feedback-card {
-    width: 100%;
-    max-width: 420px;
-    padding: 30px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(0, 209, 255, 0.15), 0 20px 60px rgba(0,0,0,0.8);
-    text-align: center;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-
-/* Heading */
-.feedback-card h3 {
-    color: #00D1FF;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
-
-/* Stars */
-#stars {
-    margin: 15px 0;
-}
-
-#stars span {
-    font-size: 32px;
-    cursor: pointer;
-    color: #444;
-    transition: 0.3s;
-}
-
-/* Active + Hover Glow */
-#stars span.active,
-#stars span:hover {
-    color: #00D1FF;
-    text-shadow: 0 0 10px #00D1FF;
-}
-
-/* Textarea */
-#feedback {
-    width: 100%;
-    height: 110px;
-    padding: 12px;
-    border-radius: 12px;
-    margin-top: 10px;
-
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.15);
-
-    color: white;
-    resize: none;
-    outline: none;
-}
-
-/* Submit Button */
-#submitBtn {
-    width: 100%;
-    margin-top: 20px;
-    padding: 14px;
-
-    border: none;
-    border-radius: 30px;
-
-    background: linear-gradient(90deg, #00D1FF, #00ff88);
-
-    color: #000;
-    font-weight: bold;
-    letter-spacing: 1px;
-
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#submitBtn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 209, 255, 0.5);
-}
-
-/* Success Message */
-#successMsg {
-    display: none;
-    margin-top: 20px;
-    padding: 14px;
-    border-radius: 12px;
-
-    background: rgba(0,255,150,0.1);
-    border: 1px solid rgba(0,255,150,0.4);
-
-    color: #00ff88;
-    font-size: 14px;
-}
-/* ===== NEW ADDITIONS ===== */
-
-#tsparticles {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-@keyframes sosPulse {
-  0%   { transform: scale(1);   opacity: 0.8; }
-  100% { transform: scale(1.15); opacity: 0; }
-}
-
-.danger::after, .help::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 16px;
-  border: 2px solid currentColor;
-  animation: sosPulse 1.5s infinite;
-  opacity: 0;
-}
-#liveClock {
-  color: #00D1FF;
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: 4px;
-  font-family: 'Inter', monospace;
-  background: rgba(0, 209, 255, 0.06);
-  padding: 8px 20px;
-  border-radius: 30px;
-  border: 1px solid rgba(0, 209, 255, 0.25);
-  box-shadow: 0 0 12px rgba(0, 209, 255, 0.15);
-  width: fit-content;        /* ← এটাই আসল fix */
-  white-space: nowrap;
-}
-
-.live-counter {
-  text-align: center;
-  margin: 60px 0;
+<div id="loader" style="
+  position:fixed;inset:0;background:#0a0a0a;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  z-index:99999;font-weight:800;letter-spacing:4px;
+">
+  <div style="font-size:2rem;color:#00D1FF;">ECO<span style="color:#fff">SYNC</span></div>
+  <div style="margin-top:20px;width:200px;height:2px;background:#111;border-radius:2px;overflow:hidden;">
+    <div id="loaderBar" style="height:100%;width:0;background:linear-gradient(90deg,#00D1FF,#ff2e2e);transition:width 0.05s;"></div>
+  </div>
+  <div style="margin-top:12px;color:#555;font-size:0.7rem;" id="loaderPct">0%</div>
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSync | Hospitality Crisis Response</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <div class="shop-front">
+        <div class="curtain left-curtain">
+            <h1 class="hotel-name">GRAND</h1>
+        </div>
+        <div class="curtain right-curtain">
+            <h1 class="hotel-name">PLAZA</h1>
+        </div>
+        <div class="scroll-indicator">
+            <p>SCROLL TO ACTIVATE EMERGENCY HUB</p>
+            <div class="mouse-icon"></div>
+        </div>
+    </div>
+
+    <div class="ambulance-zone">
+        <img src="https://cdn.pixabay.com/photo/2024/12/31/06/47/ambulance-9301630_1280.jpg" id="ambulanceImg" alt="Response Vehicle">
+    </div>
+
+    <div class="main-app">
+        <nav class="premium-nav">
+            <div class="logo">ECO<span>SYNC</span></div>
+        </nav>
+<div id="liveClock" style="color:#00D1FF;font-weight:800;font-size:1rem;letter-spacing:2px;"></div>
+<div style="display:flex;align-items:center;gap:8px;">
+  <div style="width:8px;height:8px;border-radius:50%;background:#00ff88;
+    box-shadow:0 0 10px #00ff88;animation:blink 1s infinite;"></div>
+  <span style="color:#00ff88;font-size:0.75rem;letter-spacing:2px;font-weight:800;">SYSTEM LIVE</span>
+</div>   
+<section class="hero-text">
+            <span class="tagline">HACK2SKILL CHALLENGE</span>
+            <h2>Rapid Crisis <br><span class="accent">Response</span></h2>
+            <p>When the "Grand Plaza" faces a crisis, information silos cost lives. EcoSync bridges the gap between distressed guests, staff, and responders instantly.</p>
+        </section>
+
+        <section class="features-section">
+    <h1 class="section-title">HOW THE WEBSITE WORKS</h1>
+    <div class="features">
+        <div class="feature-card" onclick="document.querySelector('.report-section').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;">
+            <h3>Detect</h3>
+            <p>When residents face issues like fire, short circuit, electricity problems, or medical emergencies, they can visit the website.</p>
+        </div>
+
+        <div class="feature-card" onclick="document.querySelector('.report-section').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;">
+            <h3>Fill The Emergency Form</h3>
+            <p>Residents enter their flat/block number, select the issue type, and describe it. A notification is sent to Ecosync, and the team responds quickly.</p>
+        </div>
+
+        <div class="feature-card" onclick="document.querySelector('.report-section').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;">
+            <h3>Submit</h3>
+            <p>After submission, Ecosync receives the alert and takes immediate action to resolve the issue.</p>
+        </div>
+   
+        <div class="feature-card wide" onclick="document.querySelector('.sos-system').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;">
+            <h3>Quick Access Button</h3>
+            <p>For severe emergencies only. Misuse may result in warnings or temporary bans. Designed strictly for fire, medical, or electrical crises.</p>
+        <div class="quick-access-alert">
+        ⚠️ FOR ANY SUSPICIOUS ACTIVITY OR INFRASTRUCTURE DAMAGE (AFTER AN EARTHQUAKE / STORM),
+        USE THE <span>QUICK ACCESS BUTTON</span>
+    </div>
+        </div>
+    </div>
+</section>
+            <section class="footer-space">
+            <h1>DECENTRALIZED. Breaking boundaries with a borderless ecosystem.<br>
+
+RELIABLE. Built on a foundation of unshakeable trust and security.<BR>
+
+FAST. Performance that redefines the speed of modern innovation.</h1>
+        </section>
+    </div>
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-card">
+            <h2>GRAND<span>PLAZA</span></h2>
+            <p>Owner Registration</p>
+            <form id="registrationForm">
+                <div class="input-group">
+                    <input type="text" name="owner_name" required placeholder="Owner Name">
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" required placeholder="Email Address">
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" required placeholder="Password">
+                </div>
+                <button type="submit" class="reg-btn">INITIALIZE SYSTEM</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCYf7Gd3fpIjiUKA3WAG6GfwStGFDHXHa8",
+    authDomain: "web-app-for-crisis.firebaseapp.com",
+    projectId: "web-app-for-crisis",
+    storageBucket: "web-app-for-crisis.firebasestorage.app",
+    messagingSenderId: "662509699721",
+    appId: "1:662509699721:web:3c57df8ec0b96b92f83c58",
+    measurementId: "G-ZW43K4PV86"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  //We’re making it globally available so that script.js can now send data.
+  window.db = db;
+  window.addDoc = addDoc;
+  window.collection = collection;
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script type="module" src="script.js"></script>
+   <div class="map-section">
+    <h2>GRAND PLAZA HOUSING COMPLEX MAP</h2>
+    
+    <img src="https://the2d3dfloorplancompany.com/wp-content/uploads/2021/12/Apartment-3D-Property-Map-Example-1024x395.webp" 
+         alt="Housing Map">
+</div>
+<!-- 🔥 EMERGENCY SECTIONS -->
+<section class="emergency-sections">
+    <h1 class="section-title">EMERGENCY CONTROL CENTER</h1>
+
+   
+
+<!-- 🔥 REPORT FORM -->
+<section class="report-section">
+    <h2>Report Emergency</h2>
+
+    <form id="reportForm" class="auth-card premium-card">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <select name="type" required>
+            <option value="">Select Emergency Type</option>
+            <option value="medical">Medical</option>
+            <option value="fire">Fire / Electrical</option>
+            <option value="other">Other</option>
+        </select>
+
+        <input type="text" name="location" placeholder="Flat / Block" required>
+
+        <textarea name="details" placeholder="Describe issue..." required></textarea>
+
+        <button class="reg-btn">SEND ALERT</button>
+    </form>
+</section>
+
+<!-- 🔥 HEADING -->
+<h1 class="quick-heading">QUICK ACCESS BUTTON</h1>
+
+<div class="sos-system">
+
+  <div class="sos-btn safe" data-type="safe">
+    ✔ I am Safe
+  </div>
+
+  <div class="sos-btn help" data-type="help">
+    ! I Need Help
+  </div>
+
+  <div class="sos-btn danger" data-type="critical">
+    ⚠ I am Trapped
+  </div>
+
+  <div class="status-card">
+    <h3 id="sosStatus">Awaiting response</h3>
+  </div>
+
+</div>
+<script>
+gsap.from(".section-title", {
+    y: -50,
+    opacity: 0,
+    duration: 1
+});
+
+gsap.from(".feature-card", {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2
+});
+
+gsap.from(".quick-access-alert", {
+    scale: 0.8,
+    opacity: 0,
+    duration: 1,
+    delay: 0.5
+});
+</script>
+<!-- ===================== -->
+<!-- ⭐ FEEDBACK SECTION -->
+<!-- ===================== -->
+<section class="feedback-section">
+<section class="feedback-section" style="width:100%;padding:0 16px;box-sizing:border-box;"></section>
+  <div class="feedback-card">
+    <h3>RATE & FEEDBACK</h3>
+
+    <p>Kindly rate your experience:</p>
+
+    <div id="stars">
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+    </div>
+
+    <p>Please provide your feedback:</p>
+
+    <textarea id="feedback" placeholder="Write your feedback..."></textarea>
+
+    <button id="submitBtn">SUBMIT FEEDBACK</button>
+
+    <div id="successMsg">
+      ✔ Thank you for sharing your valuable feedback with us.
+    </div>
+  </div>
+<div class="live-counter" style="text-align:center;margin:40px 0;">
+  <span style="font-size:3rem;font-weight:800;color:#ff2e2e;" id="alertCount">0</span>
+  </div>
+</section>
+<footer style="
+  text-align:center;
   padding: 40px;
-  border-radius: 20px;
-  background: rgba(255, 46, 46, 0.05);
-  border: 1px solid rgba(255, 46, 46, 0.15);
-}
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.2);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-top: 80px;
+">
+© 2026 ECOSYNC — BUILT FOR HACK2SKILL &nbsp;|&nbsp;  ALL RIGHTS RESERVED
+</footer>
 
-.live-counter p {
-  color: #aaa;
-  letter-spacing: 3px;
-  margin-top: 10px;
-  font-size: 0.85rem;
-}
-/* ===== PULSE FIX ===== */
-.sos-btn {
-  position: relative;
-  overflow: visible;
-}
-
-.danger::after, .help::after {
-  position: absolute;  
-}
-
-/* ===== POPUP UPGRADE ===== */
-.simple-popup {
-  position: fixed;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(10,10,10,0.98));
-  color: #fff;
-  padding: 16px 28px;
-  border-radius: 12px;
-  border-left: 4px solid #00D1FF;
-  box-shadow: 0 0 30px rgba(0,209,255,0.3), 0 10px 40px rgba(0,0,0,0.8);
-  z-index: 99999;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  animation: popupSlide 0.4s ease;
-}
-
-@keyframes popupSlide {
-  from { opacity: 0; top: 0px; }
-  to   { opacity: 1; top: 30px; }
-}
-
-/* safe popup = green */
-.simple-popup.safe-popup {
-  border-left: 4px solid #00ff88;
-  box-shadow: 0 0 30px rgba(0,255,136,0.3), 0 10px 40px rgba(0,0,0,0.8);
-}
-
-/* danger popup = red */
-.simple-popup.danger-popup {
-  border-left: 4px solid #ff2e2e;
-  box-shadow: 0 0 30px rgba(255,46,46,0.4), 0 10px 40px rgba(0,0,0,0.8);
-}
-.premium-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 10%;
-  position: sticky;
-  top: 0;
-  z-index: 500;
-  background: rgba(10, 10, 10, 0.7);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(197, 160, 89, 0.15);
-  box-shadow: 0 4px 30px rgba(0, 209, 255, 0.06);
-}
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(#00D1FF, #ff2e2e);
-  border-radius: 10px;
-}
-::selection {
-  background: rgba(0, 209, 255, 0.3);
-  color: #fff;
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
-.logo {
-  animation: glitch 4s infinite;
-}
-
-@keyframes glitch {
-  0%, 90%, 100% { 
-    text-shadow: none; 
-    transform: none;
-  }
-  91% { 
-    text-shadow: 2px 0 #ff2e2e, -2px 0 #00D1FF;
-    transform: skewX(2deg);
-  }
-  93% { 
-    text-shadow: -2px 0 #ff2e2e, 2px 0 #00D1FF;
-    transform: skewX(-2deg);
-  }
-  95% { 
-    text-shadow: none;
-    transform: none;
-  }
-}
-@media (max-width: 768px) {
-  .hero-text h2 { font-size: 2.8rem; }
-  .features { grid-template-columns: 1fr; }
-  .feature-card.wide { grid-column: span 1; }
-  .main-app { padding: 0 5%; }
-  .auth-card { width: 90%; }
-  .feedback-card { width: 90%; margin: 0 auto; }
-  #reportForm { width: 95%; }
-  .hotel-name { font-size: 14vw; }
-  .premium-nav { padding: 16px 5%; }
-  .sos-system { padding: 20px 15px; }
-  .feedback-section { padding: 0 16px; width: 100%; }
-}
-.hotel-name {
-    font-size: 5vw !important;
-    letter-spacing: 6px !important;
-}
