@@ -792,11 +792,12 @@ body {
   .feature-card.wide { grid-column: span 1; }
   .main-app { padding: 0 5%; }
   .auth-card { width: 90%; }
-  .feedback-card { width: 90%; }
+  .feedback-card { width: 90%; margin: 0 auto; }
   #reportForm { width: 95%; }
   .hotel-name { font-size: 14vw; }
   .premium-nav { padding: 16px 5%; }
   .sos-system { padding: 20px 15px; }
+  .feedback-section { padding: 0 16px; width: 100%; }
 }
 .hotel-name {
     font-size: 5vw !important;
