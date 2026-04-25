@@ -716,16 +716,7 @@ body {
   from { opacity: 0; top: 0px; }
   to   { opacity: 1; top: 30px; }
 }
-.feedback-section {
-    margin-top: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-}
-#stars span {
-    font-size: 24px;
-}
+
 /* safe popup = green */
 .simple-popup.safe-popup {
   border-left: 4px solid #00ff88;
