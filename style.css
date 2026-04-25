@@ -322,9 +322,6 @@ body {
     line-height: 1.7;
     opacity: 0.92;
 }
-
-@media (hover: hover) and (pointer: fine) {
-    #submitBtn:hover {
 .form-notify:hover {
     transform: scale(1.05);
     box-shadow: 
@@ -338,7 +335,6 @@ body {
     flex-direction: column;
     gap: 20px;
 }
-
 .sos-btn {
     padding: 20px;
     border-radius: 16px;
@@ -723,7 +719,14 @@ body {
   from { opacity: 0; top: 0px; }
   to   { opacity: 1; top: 30px; }
 }
-
+.feedback-card {
+    overflow: hidden;
+    width: 90%;
+    margin: 0 auto;
+}
+#stars span {
+    font-size: 36px;
+}
 /* safe popup = green */
 .simple-popup.safe-popup {
   border-left: 4px solid #00ff88;
