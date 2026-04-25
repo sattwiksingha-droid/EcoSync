@@ -129,7 +129,7 @@ EcoSync uses a **dark emergency aesthetic** — velvet red curtains, gold accent
 ## 👨‍💻 Made By
 
 **SATTWIK SINGHA**
-Built with 🔥 for HACK2SKILL 2025
+Built with 🔥 for HACK2SKILL 2026
 
 ---
 
