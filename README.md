@@ -121,7 +121,7 @@ Admin marks it Resolved ✅
 
 1. Open the site — registration form appears
 2. Click the **🔐 ADMIN ACCESS** button (top-right of form)
-3. Enter the admin password
+3. Enter the admin password ecosync2026
 4. Admin dashboard opens in a new tab
 
 ---
