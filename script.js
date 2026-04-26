@@ -468,3 +468,30 @@ if (tagline) {
     iteration += 0.5;
   }, 50);
 }
+// ===== ADMIN LOGIN =====
+window.openAdminLogin = function() {
+  const modal = document.getElementById('adminModal');
+  modal.style.display = 'flex';
+  document.getElementById('adminPassInput').focus();
+  document.getElementById('adminError').style.display = 'none';
+  document.getElementById('adminPassInput').value = '';
+}
+
+window.closeAdminLogin = function() {
+  document.getElementById('adminModal').style.display = 'none';
+}
+
+window.checkAdminPass = function() {
+  const pass = document.getElementById('adminPassInput').value;
+  if (pass === 'ecosync2026') {
+    window.open('admin.html', '_blank');
+    window.closeAdminLogin();
+  } else {
+    document.getElementById('adminError').style.display = 'block';
+    gsap.to('#adminPassInput', {
+      x: 8, duration: 0.05, repeat: 6,
+      yoyo: true, ease: 'none',
+      onComplete: () => gsap.set('#adminPassInput', { x: 0 })
+    });
+  }
+}
