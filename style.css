@@ -123,6 +123,7 @@ body {
 }
 
 .auth-card {
+     position: relative;
     background: rgba(255, 255, 255, 0.05);
     padding: 3rem;
     border-radius: 20px;
@@ -802,4 +803,8 @@ body {
 .hotel-name {
     font-size: 5vw !important;
     letter-spacing: 6px !important;
+    @keyframes adminPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(0,209,255,0.2); }
+  50% { box-shadow: 0 0 22px rgba(0,209,255,0.5); }
+}
 
