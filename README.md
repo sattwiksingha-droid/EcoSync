@@ -73,24 +73,9 @@ ecosync/
 └── README.md        ← You are here
 ```
 
----
 
-## 🚀 Getting Started
 
-```bash
-# Step 1 — Clone the repo
-git clone https://github.com/yourusername/ecosync.git
 
-# Step 2 — Open in VS Code
-code ecosync/
-
-# Step 3 — Run with Live Server
-# Right click index.html → "Open with Live Server"
-```
-
-> No npm install. No build step. Just open and go.
-
----
 
 ## 🗺️ How It Works
 
@@ -121,7 +106,7 @@ Admin marks it Resolved ✅
 
 1. Open the site — registration form appears
 2. Click the **🔐 ADMIN ACCESS** button (top-right of form)
-3. Enter the admin password ecosync2026
+3. Enter the admin password:- ecosync2026
 4. Admin dashboard opens in a new tab
 
 ---
