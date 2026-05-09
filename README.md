@@ -57,7 +57,7 @@ Animations   →  GSAP 3 + ScrollTrigger
 Particles    →  tsParticles v2
 Database     →  Firebase Firestore v10
 Fonts        →  Google Fonts (Playfair Display + Inter)
-Hosting      →  Netlify
+Hosting      →  vercel
 ```
 
 ---
